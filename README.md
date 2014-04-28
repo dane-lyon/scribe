@@ -6,6 +6,13 @@ InstallOpenERP.sh
 
 Ce script permet d'installer OpenERP 6.1 sur un Scribe 2.3, utilisé notamment par les classes de BacPro G-A.
 
+Pour l'utiliser :
+
+    wget https://raw.githubusercontent.com/dane-lyon/scribe/master/InstallOpenERP.sh
+    chmod +x InstallOpenERP.sh
+    ./InstallOpenERP.sh
+
+
 wpkg_ln.sh
 ===
 

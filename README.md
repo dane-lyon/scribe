@@ -10,6 +10,6 @@ wpkg_ln est un petit script à télécharger depuis un serveur Scribe qui permet
 
 Pour l'utiliser :
 
-    wget https://raw.github.com/bristow/script_wpkg/master/wpkg_ln.sh
+    wget https://raw.githubusercontent.com/dane-lyon/scribe/master/wpkg_ln.sh
     chmod +x wpkg_ln.sh
     ./wpkg_ln.sh

@@ -1,8 +1,13 @@
 Scripts à utiliser sur le serveur de fichiers Eole-Scribe
-=====
+====
+
+InstallOpenERP.sh
+===
+
+Ce script permet d'installer OpenERP 6.1 sur un Scribe 2.3, utilisé notamment par les classes de BacPro G-A.
 
 wpkg_ln.sh
-====
+===
 
 Il s'agit d'un script qui automatise le téléchargement de wpkg-manage et les clients WPKG (clients Xp 32 bits, et WPKG-GP 32 et 64 bits).
 
@@ -16,7 +21,7 @@ Pour l'utiliser :
 
 
 purge.sh et purgesimple.sh
-====
+===
 
 Scripts de purge des répertoires personnels sur un serveur Eole-Scribe
 

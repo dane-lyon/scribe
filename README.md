@@ -1,4 +1,4 @@
-Script pour utiliser sur le serveur de fichiers Eole-Scribe
+Scripts à utiliser sur le serveur de fichiers Eole-Scribe
 =====
 
 wpkg_ln.sh

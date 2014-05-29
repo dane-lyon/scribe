@@ -1,6 +1,21 @@
 Scripts à utiliser sur le serveur de fichiers Eole-Scribe
 ====
 
+Préambule
+===
+
+Si vous avez des difficultés pour télécharger les scripts depuis le serveur scribe, il faut rajouter le proxy en faisant :
+
+    export https_proxy="ip_proxy:port_proxy"
+puis si vous avez le message suivant "Incapable d'établir une connexion SSL", il faut rajouter l'argument suivant :
+    --no-check-certificate
+
+Ce qui donne par exemple :
+
+    wget https://raw.githubusercontent.com/dane-lyon/scribe/master/purgesimple.sh --no-check-certificate
+
+
+
 InstallOpenERP.sh
 ===
 

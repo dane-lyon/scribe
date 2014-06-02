@@ -24,8 +24,8 @@ apt-get update
 apt-get install openerp
 
 #### ouverture des ports sur le scribe , en fait ce fichier devrRA REDESCENDRE VIA LA VARIANTE ET C'EST INUTILE DE LE CREER SI TU NE RECONFIGURE PAS, LE FICHIER NE SERA PAS TRAITE DONC PAS DE REGLES.
-echo " allow_src(interface='eth0', ip='0/0', port='8069')
-     allow_src(interface='eth0', ip='0/0', port='5432')" > /usr/share/eole/firewall/00_root_openerp.fw
+echo "allow_src(interface='eth0', ip='0/0', port='8069')
+allow_src(interface='eth0', ip='0/0', port='5432')" > /usr/share/eole/firewall/00_root_openerp.fw
 #donc on ajoute les autorisations à la volée
 	/sbin/iptables -I wide-root -p tcp -m state --state NEW -m tcp --dport 8069 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
 	/sbin/iptables -I wide-root -p tcp -m state --state NEW -m tcp --dport 5432 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT

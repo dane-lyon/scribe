@@ -52,3 +52,10 @@ L'idée de purge.sh est de supprimer le cache et les fichiers superflus afin qu'
 Le script purge est à exécuter de manière régulière, tous les jours, sur le serveur, via un cron. Plus de détails sur cette page : http://nefertiti.crdp.ac-lyon.fr/wk/cdch/purge_des_repertoires_perso
 
 purgesimple.sh est un petit script qui permet de gagner du temps dans une optique de migration de serveur 2.2 en 2.3, il supprime les nombreux fichiers des profils utilisateurs (libreoffice, openoffice.org, SunJava et Microsoft), fichiers se trouvant dans le dossier .Config.
+
+modifproxyesu.sh
+===
+
+Petit script pour modifier la config du proxy dans tous les xml d'esu
+Attention on met ici les adresses ip en dur donc il faut les adapter à la configuration du lycée.
+

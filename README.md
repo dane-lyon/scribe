@@ -57,5 +57,5 @@ modifproxyesu.sh
 ===
 
 Petit script pour modifier la config du proxy dans tous les xml d'esu
-Attention on met ici les adresses ip en dur donc il faut les adapter à la configuration du lycée.
+Attention à bien respecter le format ip (exemple 172.16.0.252)
 

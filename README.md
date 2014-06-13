@@ -56,6 +56,8 @@ purgesimple.sh est un petit script qui permet de gagner du temps dans une optiqu
 modifproxyesu.sh
 ===
 
-Petit script pour modifier la config du proxy dans tous les xml d'esu
-Attention il faut bien respecter le format ip (exemple 172.16.0.252) .
 
+Petit script pour modifier la config du proxy dans tous les groupes de machines ESU.
+Auparavant, le script fait une sauvegarde de tous les groupes dans /home/esu.sav.
+
+Attention, il faut bien respecter le format ip (exemple 172.16.0.252).

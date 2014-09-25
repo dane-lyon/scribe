@@ -95,6 +95,13 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\.Config/Local\ /S
 find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\.Config/Application\ Data/Regressi/tampon/videoPA.avi' -exec rm -rf {} \; -print
 ####################
 
+####################
+## Suppression du fichier temporaire de Abatia
+  echo + Nettoyage Abatia
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\.Config/Application\ Data/Abatia-3-0' -exec rm -rf {} \; -print
+####################
+
+
 }
 
 echo "">>  $log

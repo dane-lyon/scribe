@@ -3,7 +3,8 @@
 #### script pour installer Open Erp sur scribe 2.3 #######
 #### DANE rectorat de lyon ######
 #### Fait par Dominique Jassin #####
-#### Version 2 ######
+#### Modifié par Simon.B et Jean-Philippe.P ####
+#### Version 2.1 ######
 
 #### on teste si le paquet est présent inutile d'aller plus loin si c'est la cas
 dpkg -s openerp &>/dev/null
@@ -95,6 +96,20 @@ echo "les fichiers modifiés par cette installation sont:
 
 Les anciens fichiers de configuration ont une extension en .BAK. Vous pouvez toujours utiliser cp pour les remettre en place en cas de problème " > /home/a/admin/perso/InstallationOpenERP.log
 
+
+
+##### Nouvelle fonction ####
+
+# Ajout d'un cron pour redémarrer chaque jour les services pour OpenERP 
+echo 30 23 * * * root $(dpkg -s openerp &>/dev/null) ; [[ $(echo $?) -eq 0 ]] && /etc/init.d/postgresql restart >> /etc/cron.d/purgeHOME
+echo 35 23 * * * root $(dpkg -s openerp &>/dev/null) ; [[ $(echo $?) -eq 0 ]] && /etc/init.d/openerp restart >> /etc/cron.d/purgeHOME
+
+# Déporte les bases d'OpenERP dans le home
+mkdir /home/openerp_bdd
+mv /var/lib/postgresql/8.4/main/base /home/openerp_bdd
+ln -s /home/openerp_bdd/base /var/lib/postgresql/8.4/main/base
+chown -R postgres:postgres /home/openerp_bdd/base
+chmod -R u=rwx /home/openerp_bdd/base
 
 exit 0
 fi

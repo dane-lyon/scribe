@@ -18,7 +18,8 @@ else
 #### on rajoute le dépôt open erp dans la source.list
 
 touch /etc/apt/sources.list.d/openerp-6.1-nightly.list
-echo deb http://nightly.openerp.com/6.1/nightly/deb ./ > /etc/apt/sources.list.d/openerp-6.1-nightly.list
+#echo deb http://nightly.openerp.com/6.1/nightly/deb ./ > /etc/apt/sources.list.d/openerp-6.1-nightly.list
+echo deb http://nightly.odoo.com/6.1/nightly/deb ./ > /etc/apt/sources.list.d/openerp-6.1-nightly.list
 
 ##### on installe openerp et on met à jour les paquets
 apt-get update

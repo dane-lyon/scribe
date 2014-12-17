@@ -11,11 +11,11 @@ echo "35 23 * * * /etc/init.d/openerp restart" >> /etc/cron.d/openerp_restart
 /etc/init.d/postgresql-8.4 stop
 /etc/init.d/openerp stop
 
-#mkdir /home/openerp_bdd
-#mv /var/lib/postgresql/8.4/main/base /home/openerp_bdd
-#ln -s /home/openerp_bdd/base /var/lib/postgresql/8.4/main/base
-#chown -R postgres:postgres /home/openerp_bdd/base
-#chmod -R u=rwx /home/openerp_bdd/base
+mkdir /home/openerp_bdd
+mv /var/lib/postgresql/8.4/main/base /home/openerp_bdd
+ln -s /home/openerp_bdd/base /var/lib/postgresql/8.4/main/base
+chown -R postgres:postgres /home/openerp_bdd/base
+chmod -R u=rwx /home/openerp_bdd/base
 
 /etc/init.d/postgresql-8.4 start
 /etc/init.d/openerp start

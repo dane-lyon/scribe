@@ -3,8 +3,8 @@
 if [ -f /etc/init.d/openerp ]; then
 
 # Ajout d'un cron pour redémarrer chaque jour les services pour OpenERP 
-echo "30 23 * * * /etc/init.d/postgresql-8.4 restart" > /etc/cron.d/openerp_restart
-echo "35 23 * * * /etc/init.d/openerp restart" >> /etc/cron.d/openerp_restart
+echo "30 23 * * * root /etc/init.d/postgresql-8.4 restart" > /etc/cron.d/openerp_restart
+echo "35 23 * * * root /etc/init.d/openerp restart" >> /etc/cron.d/openerp_restart
 
 # Déporte les bases d'OpenERP dans le home
 

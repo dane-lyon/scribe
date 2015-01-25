@@ -59,11 +59,11 @@ find /home -maxdepth 12 -type f -iregex '^.*LibreOffice.*cache.*\.dat$' -exec rm
 find /home -maxdepth 12 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/LibreOffice/4/user/uno\_packages/cache' -exec rm -rf {} \; -print
 ####################
 
-####################
-## Adobe AIR
- echo + Nettoyage Adobe AIR
-# Purge du cache de Adobe AIR
-find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Adobe/AIR' -exec rm -rf {} \; -print
+# ####################
+# ## Adobe AIR
+#  echo + Nettoyage Adobe AIR
+# # Purge du cache de Adobe AIR
+# find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Adobe/AIR' -exec rm -rf {} \; -print
 
 ####################
 ## Fichiers verrous

@@ -11,7 +11,7 @@
 /bin/sed -i  's/\\.[Cc]onfig/\\config_eole/g' /home/esu/Base/*/*xml
 
 # deplacement du profil obligatoire XP retouche
-# il faut au préalable avoir modifier le profil obligatoire en suivant la documentation
+# il faut au préalable avoir modifié le profil obligatoire en suivant la documentation
 /bin/mv /home/a/admin/perso/ntuserXP.man /home/netlogon/profil/ntuser.man
 # deplacement du profil obligatoire 7 retouche
 /bin/mv /home/a/admin/perso/ntuser7.man /home/netlogon/profil.V2/ntuser.man

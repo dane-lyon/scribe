@@ -14,7 +14,7 @@
 # il faut au préalable avoir modifier le profil obligatoire en suivant la documentation
 /bin/mv /home/a/admin/perso/ntuserXP.man /home/netlogon/profil/ntuser.man
 # deplacement du profil obligatoire 7 retouche
-/bin/mv /home/a/admin/perso/ntuser7.man /home/netlogon/profil.V2/ntuser7.man
+/bin/mv /home/a/admin/perso/ntuser7.man /home/netlogon/profil.V2/ntuser.man
 
 # renomme les dossier .cCfonfig en config_eole
 ldapsearch -x cn=DomainUsers | grep -i memberuid | awk '{print $2}'| sort -u | while read i

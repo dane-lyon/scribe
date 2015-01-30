@@ -19,7 +19,7 @@
 # renomme les dossier .cCfonfig en config_eole
 ldapsearch -x cn=DomainUsers | grep -i memberuid | awk '{print $2}'| sort -u | while read i
 do
-    echo "[ -d /home/${i:0:1}/${i}/perso/.Config ] && mv /home/${i:0:1}/${i}/perso/.Config /home/${i:0:1}/${i}/perso/config_eole"
-    echo "[ -d /home/${i:0:1}/${i}/perso/.config ] && mv /home/${i:0:1}/${i}/perso/.config /home/${i:0:1}/${i}/perso/config_eole"
+    [ -d /home/${i:0:1}/${i}/perso/.Config ] && mv /home/${i:0:1}/${i}/perso/.Config /home/${i:0:1}/${i}/perso/config_eole
+    [ -d /home/${i:0:1}/${i}/perso/.config ] && mv /home/${i:0:1}/${i}/perso/.config /home/${i:0:1}/${i}/perso/config_eole
 done
 

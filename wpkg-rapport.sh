@@ -33,11 +33,11 @@ else
         rm -rf $FILE
         #unzip -u wpkg-create-report.zip
         #rm -rf wpkg-create-report.zip
-        sed -i 's/<wpkgBaseDir><\/wpkgBaseDir>/<wpkgBaseDir>\\\\'$nom_machine'\\wpkg\\<\/wpkgBaseDir>/g' createReport.xml
-        sed -i 's/<clientStateStorePath>clientStates/<clientStateStorePath>\\\\'$nom_machine'\\wpkg\\softwares\\.EtatsClients\\/g' createReport.xml
-        sed -i 's/<saveOutput>false/<saveOutput>true/g' createReport.xml
-        sed -i 's/<outputFile>c:\\/<outputFile>\\\\'$nom_machine'\\wpkg\\rapports\\Compte-Rendu-/g' createReport.xml
-        echo "cscript createReport.js" > $WPKGRAPPORT/'Création du rapport WPKG.bat'
+        sed -i 's/<wpkgBaseDir><\/wpkgBaseDir>/<wpkgBaseDir>\\\\'$nom_machine'\\wpkg\\<\/wpkgBaseDir>/g' settings.xml
+        sed -i 's/<clientStateStorePath>clientStates/<clientStateStorePath>\\\\'$nom_machine'\\wpkg\\softwares\\.EtatsClients\\/g' settings.xml
+        sed -i 's/<saveOutput>false/<saveOutput>true/g' settings.xml
+        sed -i 's/<outputFile>c:\\/<outputFile>\\\\'$nom_machine'\\wpkg\\rapports\\Compte-Rendu-/g' settings.xml
+        echo "cscript run.js" > $WPKGRAPPORT/'Création du rapport WPKG.bat'
         todos -u $WPKGRAPPORT/'Création du rapport WPKG.bat'
         if [ $? = 0 ] ; then
             echo "Creation du script de creation du rapport WPKG OK !"

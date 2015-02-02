@@ -10,10 +10,14 @@
 . /usr/share/eole/FonctionsEoleNg
 . /usr/bin/ParseDico
 
-if [ $activer_proxy_client="oui" ] ; then
-export https_proxy="$proxy_client_adresse:$proxy_client_port"
+#Déclaration du proxy si besoin
+if [ -f /etc/eole/version ] && [ "$proxy" == "oui" ] ; then
+    #Scribe 2.2
+    export https_proxy="$proxy_server:$proxy_port"
+elif [ "$activer_proxy_client" == "oui" ] ; then
+    #Scribe 2.3
+    export https_proxy="$proxy_client_adresse:$proxy_client_port"
 fi
-
 
 #variable pour le nom du fichier Ã  changer en cas de changement de nom
 file="infosquota2.02.tar.gz"

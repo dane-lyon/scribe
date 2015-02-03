@@ -2,7 +2,7 @@
 # Ce script permet d'automatiser le renommage des dossiers .Config en config_eole
 # DANE de l'académie de Lyon
 # Librement inspiré de la documentation EOLE
-# Version 1 - Janvier 2015
+# Version 1.1 - Janvier 2015
 
 # sauvegarde de la configuration ESU
 /bin/cp -a /home/esu /home/esu.sav

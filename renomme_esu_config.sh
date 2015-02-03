@@ -18,13 +18,15 @@
 /bin/mv /home/a/admin/perso/ntuser7.man /home/netlogon/profil.V2/ntuser.man
 
  #mettre le droit de lecture aux profils obligatoires
-chmod +r /home/netlogon/profil/ntuser.man
-chmod +r /home/netlogon/profil.V2/ntuser.man
+ chown -R root:root /home/netlogon/profil*
+ chmod 0644 /home/netlogon/profil/ntuser.man
+ chmod 0644 /home/netlogon/profil.V2/ntuser.man 
 
 # renomme les dossier .cCfonfig en config_eole
 ldapsearch -x cn=DomainUsers | grep -i memberuid | awk '{print $2}'| sort -u | while read i
 do
+    # suppression du dossier qui ne devrait pas exister
+    [ -d  /home/${i:0:1}/${i}/perso/config_eole ] && rm -rf /home/${i:0:1}/${i}/perso/config_eole
     [ -d /home/${i:0:1}/${i}/perso/.Config ] && mv /home/${i:0:1}/${i}/perso/.Config /home/${i:0:1}/${i}/perso/config_eole
     [ -d /home/${i:0:1}/${i}/perso/.config ] && mv /home/${i:0:1}/${i}/perso/.config /home/${i:0:1}/${i}/perso/config_eole
-done
-
+done 

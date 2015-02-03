@@ -1,6 +1,7 @@
 #!/bin/bash
 # Ce script permet d'automatiser le renommage des dossiers .Config en config_eole
 # DANE de l'académie de Lyon
+# ATTENTION, lire la documentation de la DANE avant utilisation !!
 # Librement inspiré de la documentation EOLE
 # Version 1.1 - Janvier 2015
 

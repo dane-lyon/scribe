@@ -16,6 +16,10 @@
 # deplacement du profil obligatoire 7 retouche
 /bin/mv /home/a/admin/perso/ntuser7.man /home/netlogon/profil.V2/ntuser.man
 
+ #mettre le droit de lecture aux profils obligatoires
+chmod +r /home/netlogon/profil/ntuser.man
+chmod +r /home/netlogon/profil.V2/ntuser.man
+
 # renomme les dossier .cCfonfig en config_eole
 ldapsearch -x cn=DomainUsers | grep -i memberuid | awk '{print $2}'| sort -u | while read i
 do

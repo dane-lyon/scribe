@@ -3,7 +3,7 @@
 # DANE de l'académie de Lyon
 # ATTENTION, lire la documentation de la DANE avant utilisation !!
 # Librement inspiré de la documentation EOLE
-# Version 1.1 - Janvier 2015
+# Version 1.2 - Janvier 2015
 
 # sauvegarde de la configuration ESU
 /bin/cp -a /home/esu /home/esu.sav

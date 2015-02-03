@@ -26,7 +26,7 @@
 ldapsearch -x cn=DomainUsers | grep -i memberuid | awk '{print $2}'| sort -u | while read i
 do
     # suppression du dossier qui ne devrait pas exister
-    [ -d  /home/${i:0:1}/${i}/perso/config_eole ] && rm -rf /home/${i:0:1}/${i}/perso/config_eole
+    [ -d /home/${i:0:1}/${i}/perso/config_eole ] && rm -rf /home/${i:0:1}/${i}/perso/config_eole
     [ -d /home/${i:0:1}/${i}/perso/.Config ] && mv /home/${i:0:1}/${i}/perso/.Config /home/${i:0:1}/${i}/perso/config_eole
     [ -d /home/${i:0:1}/${i}/perso/.config ] && mv /home/${i:0:1}/${i}/perso/.config /home/${i:0:1}/${i}/perso/config_eole
 done 

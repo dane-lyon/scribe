@@ -4,7 +4,7 @@
 #### DANE rectorat de lyon ######
 #### Fait par Dominique Jassin #####
 #### Modifié par Simon.B et Jean-Philippe.P ####
-#### Version 2.1 ######
+#### Version 3 ######
 
 #### on teste si le paquet est présent inutile d'aller plus loin si c'est la cas
 dpkg -s openerp &>/dev/null
@@ -15,22 +15,28 @@ else
 #### on rajoute les outils eole pour lancer postgresql et openerp
 . /usr/share/eole/FonctionsEoleNg
 
+# Install manuel car dépot obsolète
+apt-get -y install postgresql
+wget http://nightly.odoo.com/old/openerp-6.1/6.1.20140804/openerp_6.1-20140804-233536-1_all.deb
+dpkg -i openerp_6.1-20140804-233536-1_all.deb
+apt-get -fy install
+
 #### on rajoute le dépôt open erp dans la source.list
 
-touch /etc/apt/sources.list.d/openerp-6.1-nightly.list
+#touch /etc/apt/sources.list.d/openerp-6.1-nightly.list
 #echo deb http://nightly.openerp.com/6.1/nightly/deb ./ > /etc/apt/sources.list.d/openerp-6.1-nightly.list
-echo deb http://nightly.odoo.com/6.1/nightly/deb ./ > /etc/apt/sources.list.d/openerp-6.1-nightly.list
+#echo deb http://nightly.odoo.com/6.1/nightly/deb ./ > /etc/apt/sources.list.d/openerp-6.1-nightly.list
 
 ##### on installe openerp et on met à jour les paquets
-apt-get update
-apt-get install openerp
+#apt-get update
+#apt-get install openerp
 
 #### ouverture des ports sur le scribe , en fait ce fichier devrRA REDESCENDRE VIA LA VARIANTE ET C'EST INUTILE DE LE CREER SI TU NE RECONFIGURE PAS, LE FICHIER NE SERA PAS TRAITE DONC PAS DE REGLES.
 echo "allow_src(interface='eth0', ip='0/0', port='8069')
 allow_src(interface='eth0', ip='0/0', port='5432')" > /usr/share/eole/firewall/00_root_openerp.fw
 #donc on ajoute les autorisations à la volée
-	/sbin/iptables -I wide-root -p tcp -m state --state NEW -m tcp --dport 8069 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
-	/sbin/iptables -I wide-root -p tcp -m state --state NEW -m tcp --dport 5432 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
+/sbin/iptables -I wide-root -p tcp -m state --state NEW -m tcp --dport 8069 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
+/sbin/iptables -I wide-root -p tcp -m state --state NEW -m tcp --dport 5432 --tcp-flags FIN,SYN,RST,ACK SYN -j ACCEPT
 
 
 #### paramétrage de postgres pour le rendre accessible depuis le réseau
@@ -38,8 +44,10 @@ allow_src(interface='eth0', ip='0/0', port='5432')" > /usr/share/eole/firewall/0
 
 sed -i.BAK  "s/^\#listen_addresses =.*/listen_addresses = '*'/g" /etc/postgresql/8.4/main/postgresql.conf
 ### modification du fichier pg_hba.conf
+
 #### attention je passe par un numéro de ligne donc cette opération peut échouer
 sed -i.BAK "85i\host    all        all    0.0.0.0/0    trust" /etc/postgresql/8.4/main/pg_hba.conf
+
 #### on redémarre postgresql et openerp pour que la config remonte
 
 service postgresql-8.4 restart
@@ -79,8 +87,8 @@ chmod +x /usr/share/eole/diagnose/module/151-openerp
 #### le dépot openerp-6.1-nightly.list n'a pas de signature et fait échouer la maj des scribes
 #### on supprime donc le fichier et on relance un apt-get update
 
-rm /etc/apt/sources.list.d/openerp-6.1-nightly.list
-apt-get update
+#rm /etc/apt/sources.list.d/openerp-6.1-nightly.list
+#apt-get update
 
 #### message de fin d'installation
 

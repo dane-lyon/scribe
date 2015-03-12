@@ -5,6 +5,8 @@
 # exemple de cron pour lancer tous les jours a 6H du matin (/etc/cron.d/backup_opener) : 
 # 0 6 * * * root /root/drt/backup_openerp.sh
 
+. ParseDico
+
 cd /home/openerp_bdd/base
 
 # Lancement avec le compte postgres
@@ -22,7 +24,7 @@ find /home/openerp_bdd/backup_openerp-* -type f -mtime +20 -exec rm -rf {} \;
 
 else
 
-echo "Il y a eu une erreur lors du backup postgresql d'OpenERP pour l'établissement 'machin truc (a remplacer)', vous pouvez consulter le fichier backup.erreur dans /home/openerp_base/base pour plus de précision" | mutt -s "MAIL" simon.bernard@ac-lyon.fr
+echo "Il y a eu une erreur lors du backup postgresql d'OpenERP pour l'établissement $nom_etab ($numero_etab), vous pouvez consulter le fichier backup.erreur dans /home/openerp_base/base pour plus de précision" | mutt -s "MAIL" simon.bernard@ac-lyon.fr
 
 fi
 

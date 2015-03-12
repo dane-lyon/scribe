@@ -25,7 +25,7 @@ find /home/openerp_bdd/backup_openerp-* -type f -mtime +20 -exec rm -rf {} \;
 
 else
 
-echo "Il y a eu une erreur lors du backup postgresql d'OpenERP pour l'établissement $libelle_etab ($numero_etab), vous pouvez consulter le fichier backup.erreur dans /home/openerp_base/base pour plus de précision" | mutt -s "MAIL" simon.bernard@ac-lyon.fr
+echo "Il y a eu une erreur lors du backup postgresql d'OpenERP pour l'établissement $libelle_etab ($numero_etab), vous pouvez consulter le fichier backup.erreur dans /home/openerp_base/base pour plus de précision" | mutt -s "MAIL" dane@ac-lyon.fr
 
 fi
 

@@ -11,7 +11,11 @@
 cd /home/openerp_bdd/base
 
 # Lancement avec le compte postgres
-su postgres -c "pg_dumpall > backup_openerp.out"
+su postgres -c "pg_dumpall > backup_openerp.out 2>backup.erreur"
+
+if [$? -ne 0] ; then
+  echo "il y a une erreur"
+fi
 
 # Compression du fichier de sauvegarde avec la date du jour
 tar czvf backup_openerp-`date +%Y-%m-%d`.tar.gz backup_openerp.out

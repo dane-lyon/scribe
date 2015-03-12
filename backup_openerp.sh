@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#V2 beta
+# Version 2
+# Dane de Lyon
 # Ce script est a placer dans le dossier /root/drt, ne pas oublier les droits d'execution (+x) !
 # exemple de cron pour lancer tous les jours a 6H du matin (/etc/cron.d/backup_opener) : 
 # 0 6 * * * root /root/drt/backup_openerp.sh

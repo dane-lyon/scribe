@@ -3,10 +3,11 @@
 #création du lien symbolique pour wpkg
 #et téléchargement de wpkg-manage + clients 32 et 7 - 64 bits
 #si eole-wpkg installé
+# pour serveurs Scribe 2.4
 
-. /usr/share/eole/FonctionsEoleNg
+. /usr/lib/eole/ihm.sh
 
-/usr/bin/dpkg -l |grep -q eole-wpkg
+/usr/bin/dpkg -s eole-wpkg &> /dev/null
 
 if [ $? -eq 0 ] ; then
     [ ! -h /home/a/admin/perso/wpkg ] && ln -s /home/wpkg /home/a/admin/perso/wpkg

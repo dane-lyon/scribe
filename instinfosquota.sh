@@ -1,23 +1,19 @@
 ﻿#!/bin/bash
 #instinfosquota
 #
-# Script d'installation d'infosquota pour Scribe 2.3 ou Scribe 2.2
+# Script d'installation d'infosquota pour Scribe 2.4
 #
 #
 #Version 2.03
 #
 
-. /usr/share/eole/FonctionsEoleNg
-. /usr/bin/ParseDico
+. /usr/lib/eole/ihm.sh
 
-#Déclaration du proxy si besoin
-if [ -f /etc/eole/version ] && [ "$proxy" == "oui" ] ; then
-    #Scribe 2.2
-    export https_proxy="$proxy_server:$proxy_port"
-elif [ "$activer_proxy_client" == "oui" ] ; then
-    #Scribe 2.3
-    export https_proxy="$proxy_client_adresse:$proxy_client_port"
+
+if [ $(CreoleGet activer_proxy_client) = "oui" ] ; then
+export https_proxy="$(CreoleGet proxy_client_adresse):$(CreoleGet proxy_client_port)"
 fi
+
 
 #variable pour le nom du fichier Ã  changer en cas de changement de nom
 file="infosquota2.02.tar.gz"
@@ -43,7 +39,7 @@ echo
 echo "----"
 EchoGras "Téléchargement d'infosquota 2"
 
-wget https://dev-eole.ac-dijon.fr/attachments/download/$numfile/$file --no-check-certificate
+wget https://dev-eole.ac-dijon.fr/attachments/download/$numfile/$file
 &>/dev/null
 
 if [ ! -f $file ]
@@ -268,9 +264,10 @@ echo "Vous pouvez consulter le résultat "
 echo "en vous loggant avec le compte 'admin' du scribe"
 echo "Ã  l'adresse suivante :"
 echo
-EchoBleu "http://$adresse_ip_eth0/outils/quotas"
+EchoBleu "http://$(CreoleGet adresse_ip_eth0)/outils/quotas"
 echo
 echo "----"
 echo
 exit 0
+
 

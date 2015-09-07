@@ -6,6 +6,10 @@
 # exemple de cron pour lancer tous les jours a 6H du matin (/etc/cron.d/backup_opener) : 
 # 0 6 * * * root /root/drt/backup_openerp.sh
 
+# Info : pour restaurer utiliser les commandes suivante :
+# pour décompresser l'archive : tar xzvf nom_archive.tar.gz
+# pour restaurer le fichier obtenu : psql -f backup_openerp.out postgres
+
 . ParseDico
 
 cd /home/openerp_bdd/base

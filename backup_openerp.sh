@@ -8,7 +8,8 @@
 
 # Info : pour restaurer utiliser les commandes suivante :
 # pour décompresser l'archive : tar xzvf nom_archive.tar.gz
-# pour restaurer le fichier obtenu : psql -f backup_openerp.out postgres
+# pour restaurer le fichier obtenu, mettre le fichier backup_openerp.out dans un répertoire ou le compte postgres a la es droits (par ex : /home/backup_bacula) et 
+# lancer la commande avec le compte postgres (su postgres) : psql -f backup_openerp.out postgres
 
 . ParseDico
 

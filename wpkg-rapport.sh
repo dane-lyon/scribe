@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #installation de wpkg-report
-#version 09/2015
+#version 09/2014
 
 . ParseDico
 

@@ -11,7 +11,7 @@
 # pour restaurer le fichier obtenu, mettre le fichier backup_openerp.out dans un répertoire ou le compte postgres a la es droits (par ex : /home/backup_bacula) et 
 # lancer la commande avec le compte postgres (su postgres) : psql -f backup_openerp.out postgres
 
-. ParseDico
+#. ParseDico
 
 cd /home/openerp_bdd/base
 
@@ -26,7 +26,7 @@ rm -f backup_openerp.out
 mv -f *.tar.gz /home/openerp_bdd
 
 # Purge des anciens backups OpenERP qui ont plus de 20 jours
-find /home/openerp_bdd/backup_openerp-* -type f -mtime +20 -exec rm -rf {} \;
+#find /home/openerp_bdd/backup_openerp-* -type f -mtime +20 -exec rm -rf {} \;
 
 else
 

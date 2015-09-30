@@ -13,6 +13,9 @@
 # - Lancer un reconfigure (pour programmer a 20H par exemple : echo "reconfigure" | at 20:00)
 # - si vous voulez récupérer les bases d'OpenERP 6 de la 2.3, restaurer votre fichier .out (cf doc)
 
+#ppour pouvoir dl en https (modifier valeur si besoin)
+export https_proxy="192.168.220.252:3128"
+
 # Installation de Postgressql
 apt-get -y install postgresql
 
@@ -40,11 +43,12 @@ echo "30 20 * * * root /etc/init.d/openerp restart" >> /etc/cron.d/openerp_resta
 
 # Mise en place d'un système de sauvegarde pour OpenERP
 wget --no-check-certificate https://raw.githubusercontent.com/dane-lyon/scribe/scribe2223/backup_openerp.sh
+mkdir /root/drt
 mv backup_openerp.sh /root/drt/ 
 chmod +x /root/drt/backup_openerp.sh
 
-# Programmation du backup toutes les nuits a 05H du matin
-echo "0 5 * * * root /root/drt/backup_openerp.sh" > /etc/cron.d/sauvegarde_openerp
+# Programmation d'une sauvegarde de toutes les bases 1 fois par semaine (chaque dimanche a 5H du matin)
+echo "0 5 * * 6 root /root/drt/backup_openerp.sh" > /etc/cron.d/sauvegarde_openerp
 
 
 exit

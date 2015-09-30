@@ -26,16 +26,16 @@ wget --no-check-certificate https://raw.githubusercontent.com/dane-lyon/experime
 mv dico_dane.xml /usr/share/eole/creole/dicos/local/
 
 # Déport des bases dans le home
-/etc/init.d/postgresql-9.1 stop && /etc/init.d/openerp stop
+/etc/init.d/postgresql stop && /etc/init.d/openerp stop
 mkdir /home/openerp_bdd
 mv /var/lib/postgresql/9.1/main/base /home/openerp_bdd
 ln -s /home/openerp_bdd/base /var/lib/postgresql/9.1/main/base
 chown -R postgres:postgres /home/openerp_bdd/base
 chmod -R u=rwx /home/openerp_bdd/base
-/etc/init.d/postgresql-9.1 start && /etc/init.d/openerp start
+/etc/init.d/postgresql start && /etc/init.d/openerp start
 
 # Ajout d'un cron qui redémarre service OpenERP et Postgresql chaque nuit a 20H30
-echo "30 20 * * * root /etc/init.d/postgresql-9.1 restart" > /etc/cron.d/openerp_restart
+echo "30 20 * * * root /etc/init.d/postgresql restart" > /etc/cron.d/openerp_restart
 echo "30 20 * * * root /etc/init.d/openerp restart" >> /etc/cron.d/openerp_restart
 
 # Mise en place d'un système de sauvegarde pour OpenERP

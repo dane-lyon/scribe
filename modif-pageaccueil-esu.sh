@@ -10,3 +10,7 @@ read -p "Donnez la valeur du nouveau url :" newurl
 sed -i  "s|$oldurl|$newurl|g" /home/esu/Base/*/*xml
 
 exit 0
+
+
+# TO DO
+# - trouver automatiquement l'ancien url plutôt que la demander.

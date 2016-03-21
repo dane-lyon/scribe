@@ -1,7 +1,9 @@
 #!/bin/bash
 # Ce script purge certains fichiers dans les repertoires personnels
 # DSI - DANE de l'académie de Lyon
-# Version 3.7 - Juillet 2015
+# Version 4.0 - Juin 2015
+
+# TEST only pour l'instant
 
 
 if [ ! -d /var/log/purge ] ; then
@@ -48,7 +50,7 @@ fi
 # Purge du cache d'OpenOffice
 find /home -maxdepth 12 -type f -iregex '^.*OpenOffice\.org.*cache.*\.dat$' -exec rm {} \; -print
 # Suppression des anciens dossier OpenOffice.org2
-find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(\.Config\|config_eole\)/Application\ Data/OpenOffice\.org2' -exec rm -r {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/OpenOffice\.org2' -exec rm -r {} \; -print
 ####################
 
 ####################
@@ -56,7 +58,7 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(\.Config\|config
  echo + Nettoyage Libre Office
 # Purge du cache de LibreOffice
 find /home -maxdepth 12 -type f -iregex '^.*LibreOffice.*cache.*\.dat$' -exec rm {} \; -print
-find /home -maxdepth 12 -type d -iregex '/home/.?/[^/]*/perso/\(\.Config\|config_eole\)/Application\ Data/LibreOffice/3/user/uno\_packages/cache' -exec rm -rf {} \; -print
+find /home -maxdepth 12 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/LibreOffice/3/user/uno\_packages/cache' -exec rm -rf {} \; -print
 ####################
 
 ####################
@@ -80,25 +82,25 @@ find /home -maxdepth 14 -type f -iregex '^.*Sun.*cache.*$' -exec rm {} \; -print
 ####################
 ## Suppression des dossiers de cle USB U3
   echo + Nettoyage Cle USB U3
-find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(\.Config\|config_eole\)/Application\ Data.U3' -exec rm -r {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data.U3' -exec rm -r {} \; -print
 ####################
 
 ####################
 ## Suppression des historiques de IE
   echo + Nettoyage Historique IE
-find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(\.Config\|config_eole\)/Local\ /Settings/Historique/History.IE5' -exec rm -r {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Local\ /Settings/Historique/History.IE5' -exec rm -r {} \; -print
 ####################
 
 ####################
 ## Suppression du fichier temporaire de Regressi
   echo + Nettoyage Regressi
-find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(\.Config\|config_eole\)/Application\ Data/Regressi/tampon/videoPA.avi' -exec rm -rf {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/Regressi/tampon/videoPA.avi' -exec rm -rf {} \; -print
 ####################
 
 ####################
 ## Suppression du fichier temporaire de Abatia
   echo + Nettoyage Abatia
-find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(\.Config\|config_eole\)/Application\ Data/Abatia-3-0' -exec rm -rf {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/Abatia-3-0' -exec rm -rf {} \; -print
 ####################
 
 

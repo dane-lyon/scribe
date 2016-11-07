@@ -46,14 +46,14 @@ EchoGras "Téléchargement d'infosquota 2"
 wget https://dev-eole.ac-dijon.fr/attachments/download/1786/infosquota.tar.gz --no-check-certificate
 &>/dev/null
 
-if [ ! -f $file ]
-	then
-		EchoRouge "Problème : $file n'a pas pu être téléchargé !"
-		EchoRouge "Abandon de l'installation"
-		exit 1
-	else
-		echo -e "["'\E[32m'"OK"'\E[0m'"] - Téléchargement réussi"
-fi
+#if [ ! -f $file ]
+#	then
+#		EchoRouge "Problème : $file n'a pas pu être téléchargé !"
+#		EchoRouge "Abandon de l'installation"
+#		exit 1
+#	else
+#		echo -e "["'\E[32m'"OK"'\E[0m'"] - Téléchargement réussi"
+#fi
 
 ###############
 # Décompression

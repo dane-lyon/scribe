@@ -43,7 +43,7 @@ echo
 echo "----"
 EchoGras "Téléchargement d'infosquota 2"
 
-wget https://dev-eole.ac-dijon.fr/attachments/download/$numfile/$file --no-check-certificate
+wget https://dev-eole.ac-dijon.fr/attachments/download/1786/infosquota.tar.gz --no-check-certificate
 &>/dev/null
 
 if [ ! -f $file ]

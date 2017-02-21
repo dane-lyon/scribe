@@ -29,13 +29,13 @@ if [ $? -eq 0 ] ; then
             fi
 
             if [ ! -f /home/wpkg/Wpkg-GP_x86.exe  ] ; then
-                wget http://wpkg-gp.googlecode.com/files/Wpkg-GP-0.15_x86.exe
+                wget --no-check-certificate https://dane.ac-lyon.fr/spip/IMG/Assistance/Wpkg-GP-0.15_x86.exe
                 mv /tmp/Wpkg-GP-0.15_x86.exe /home/wpkg/Wpkg-GP_x86.exe
             else echo "le client wpkg 7 32bits est déjà présent"
             fi
 
             if [ ! -f /home/wpkg/Wpkg-GP_x64.exe  ] ; then
-                wget http://wpkg-gp.googlecode.com/files/Wpkg-GP-0.15_x64.exe
+                wget --no-check-certificate https://dane.ac-lyon.fr/spip/IMG/Assistance/Wpkg-GP-0.15_x64.exe
                 mv /tmp/Wpkg-GP-0.15_x64.exe /home/wpkg/Wpkg-GP_x64.exe
             else echo "le client wpkg 7 64bits est déjà présent"
             fi

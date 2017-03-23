@@ -33,7 +33,7 @@ echo
 echo "----"
 EchoGras "Téléchargement d'infosquota 2"
 
-wget http://dev-eole.ac-dijon.fr/attachments/download/570/infosquota2.02.tar.gz
+wget https://github.com/dane-lyon/scribe/blob/master/infosquota2.02.tar.gz
 &>/dev/null
 
 if [ ! -f $file ]

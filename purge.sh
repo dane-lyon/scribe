@@ -105,7 +105,7 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_
 ## Suppression des dossiers com.makeblock.Scratch.old_version
 
 version=$(grep \"version\" /home/wpkg/packages/mBLock.xml | cut -c33-37)
-find /home -maxdepth 6 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.Scratch.*' > dossier_mblock.txt
+find /home -maxdepth 6 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*' > dossier_mblock.txt
 while read ligne
 do
   dossier=$(echo "$ligne" | tail -c6)

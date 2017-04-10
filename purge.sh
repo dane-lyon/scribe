@@ -101,6 +101,22 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_
 find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/Abatia-3-0' -exec rm -rf {} \; -print
 ####################
 
+####################
+## Suppression des dossiers com.makeblock.Scratch.old_version
+
+version=$(grep \"version\" /home/wpkg/packages/mBLock.xml | cut -c33-37)
+find /home -maxdepth 6 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.Scratch.*' > dossier_mblock.txt
+while read ligne
+do
+  dossier=$(echo "$ligne" | tail -c6)
+  if [ $dossier != $version ]
+ 
+ then
+    rm -Rf "$ligne"
+  fi
+done < dossier_mblock.txt
+####################
+
 
 }
 

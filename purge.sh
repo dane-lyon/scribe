@@ -104,17 +104,19 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_
 ####################
 ## Suppression des dossiers com.makeblock.Scratch.old_version
  echo + Nettoyage MBlock
-version=$(grep \"version\" /home/wpkg/packages/mBLock.xml | cut -c33-37)
-find /home -maxdepth 6 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*' > dossier_mblock.txt
-while read ligne
-do
-  dossier=$(echo "$ligne" | tail -c6)
-  if [ $dossier != $version ]
- 
- then
-    rm -Rf "$ligne"
-  fi
-done < dossier_mblock.txt
+#On vérifie si le package mBlock existe, si il n'existe pas, il n'y a pas de purge
+if [ -e "/home/wpkg/packages/mBLock.xml" ] 
+then
+#On extrait la version de mBlock depuis le package
+version=$(grep \"version\" /home/wpkg/packages/mBLock.xml | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
+#On indique la version actuelle de mBlock
+echo "Version actuelle de mBlock : $version"
+#On affiche dans le log les dossiers à supprimer
+find /home -maxdepth 6 -type d  -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version"
+#On supprime les dossiers qui ne sont pas de la version actuelle
+find /home -maxdepth 6 -type d  -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version" | tr "\n" "\0" | xargs -0 rm -Rf
+
+fi
 ####################
 
 

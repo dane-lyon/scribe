@@ -112,11 +112,11 @@ version=$(grep \"version\" /home/wpkg/packages/mBLock.xml | awk -F"value=\"" '{ 
 #On indique la version actuelle de mBlock
 echo "Version actuelle de mBlock : $version"
 #On affiche dans le log les dossiers à supprimer
-find /home -maxdepth 6 -type d  -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version"
+find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version"
 find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/cc.mblock.*" | grep --null -v "$version"
 #On supprime les dossiers qui ne sont pas de la version actuelle
-find /home -maxdepth 6 -type d  -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version" | tr "\n" "\0" | xargs -0 rm -Rf
-find /home -maxdepth 6 -type d  -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/cc.mblock.*" | grep --null -v "$version" | tr "\n" "\0" | xargs -0 rm -Rf
+find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version" | tr "\n" "\0" | xargs -0 rm -Rf
+find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/cc.mblock.*" | grep --null -v "$version" | tr "\n" "\0" | xargs -0 rm -Rf
 
 fi
 ####################

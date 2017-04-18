@@ -111,12 +111,20 @@ then
 version=$(grep \"version\" /home/wpkg/packages/mBLock.xml | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
 #On indique la version actuelle de mBlock
 echo "Version actuelle de mBlock : $version"
-#On affiche dans le log les dossiers à supprimer
-find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version"
-find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/cc.mblock.*" | grep --null -v "$version"
-#On supprime les dossiers qui ne sont pas de la version actuelle
-find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/com.makeblock.*" | grep --null -v "$version" | tr "\n" "\0" | xargs -0 rm -Rf
-find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/cc.mblock.*" | grep --null -v "$version" | tr "\n" "\0" | xargs -0 rm -Rf
+#On stocke dans un fichier temporaire l'emplacement des dossiers à supprimer
+find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/\(com.makeblock\|cc.mblock\).*" | grep -v "$version" > /tmp/dossiers_mblock.tmp
+
+#On lit le fichier contenant les dossiers à supprimer ligne par ligne
+while read ligne
+do
+	#On supprime le dossier indiqué par la ligne actuelle
+	rm -rf "$ligne"
+	#On affiche dans le log le dossier supprimé
+	echo "$ligne"
+done < /tmp/dossiers_mblock.tmp
+
+#On supprime le fichier temporaire
+rm -f /tmp/dossiers_mblock.tmp
 
 fi
 ####################

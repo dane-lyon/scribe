@@ -103,29 +103,29 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_
 
 ####################
 ## Suppression des dossiers com.makeblock.Scratch.old_version
- echo + Nettoyage MBlock
+echo + Nettoyage MBlock
 #On vérifie si le package mBlock existe, si il n'existe pas, il n'y a pas de purge
-if [ -e "/home/wpkg/packages/mBLock.xml" ] 
+xml_mblock=$(find /home/wpkg/packages  -maxdepth 1 -iregex ".*mblock.*")
+if [ -e "$xml_mblock" ]
 then
-#On extrait la version de mBlock depuis le package
-version_mblock=$(grep \"version\" /home/wpkg/packages/mBLock.xml | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
-#On indique la version actuelle de mBlock
-echo "Version actuelle de mBlock : $version_mblock"
-#On stocke dans un fichier temporaire l'emplacement des dossiers à supprimer
-find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/\(com.makeblock\|cc.mblock\).*" | grep -v "$version_mblock" > /tmp/dossiers_mblock.tmp
+  #On extrait la version de mBlock depuis le package
+  version_mblock=$(grep \"version\" $xml_mblock | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
+  #On indique la version actuelle de mBlock
+  echo "Version actuelle de mBlock : $version_mblock"
+  #On stocke dans un fichier temporaire l'emplacement des dossiers à supprimer
+  find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/\(com.makeblock\|cc.mblock\).*" | grep -v "$version_mblock" > /tmp/dossiers_mblock.tmp
 
-#On lit le fichier contenant les dossiers à supprimer ligne par ligne
-while read ligne
-do
-	#On supprime le dossier indiqué par la ligne actuelle
-	rm -rf "$ligne"
-	#On affiche dans le log le dossier supprimé
-	echo "$ligne"
-done < /tmp/dossiers_mblock.tmp
+  #On lit le fichier contenant les dossiers à supprimer ligne par ligne
+  while read ligne
+  do
+  	#On supprime le dossier indiqué par la ligne actuelle
+  	rm -rf "$ligne"
+  	#On affiche dans le log le dossier supprimé
+  	echo "$ligne"
+  done < /tmp/dossiers_mblock.tmp
 
-#On supprime le fichier temporaire
-rm -f /tmp/dossiers_mblock.tmp
-
+  #On supprime le fichier temporaire
+  rm -f /tmp/dossiers_mblock.tmp
 fi
 ####################
 
@@ -133,15 +133,16 @@ fi
 ## Purge de Sketchup
   echo + Nettoyage Sketchup
 
+xml_sketchup=$(find /home/wpkg/packages  -maxdepth 1 -iregex ".*sketchup.*")
 #Nettoyage des dossiers Sketchup 8
 find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/Google/Google\ SketchUp\ 8' -exec rm -rf {} \; -print
 
 #On vérifie si le package Sketchup existe, s'il n'existe pas, il n'y a pas de purge
-if [ -e "/home/wpkg/packages/Sketchup.xml" ]
+if [ -e "$xml_sketchup" ]
 then
   #On extrait la version de SketchUp depuis le package
-  version_sketchup=$(grep name=\"W7\" /home/wpkg/packages/Sketchup.xml | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
-
+  version_sketchup=$(grep name=\"W7\" $xml_sketchup | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
+  echo version_sketchup
   #On regarde si la variable version_sketchup n'est pas vide (Elle peut être vide si toujours sur SketchUp 8)
   if [ "$version_sketchup" != "" ]
   then

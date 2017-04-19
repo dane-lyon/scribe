@@ -129,6 +129,54 @@ rm -f /tmp/dossiers_mblock.tmp
 fi
 ####################
 
+####################
+## Purge de Sketchup
+  echo + Nettoyage Sketchup
+
+#Nettoyage des dossiers Sketchup 8
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/Google/Google\ SketchUp\ 8' -exec rm -rf {} \; -print
+
+#On vérifie si le package Sketchup existe, s'il n'existe pas, il n'y a pas de purge
+if [ -e "/home/wpkg/packages/Sketchup.xml" ]
+then
+  #On extrait la version de SketchUp depuis le package
+  version_sketchup=$(grep name=\"W7\" /home/wpkg/packages/Sketchup.xml | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
+
+  #On regarde si la variable version_sketchup n'est pas vide (Elle peut être vide si toujours sur SketchUp 8)
+  if [ "$version_sketchup" != "" ]
+  then
+
+    #On indique la version actuelle de Sketchup
+    echo -e "Version actuelle de Sketchup : $version_sketchup\n"
+
+
+    #On purge le Webcache de la version actuelle
+    echo "--- Début purge du Webcache ---"
+    find /home -maxdepth 8 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/SketchUp/SketchUp\ $version_sketchup/WebCache" -exec rm -rf {} \; -print
+    echo -e "--- Fin purge du Webcache ---\n"
+
+    #On stocke dans un fichier temporaire l'emplacement des dossiers à supprimer
+    echo "--- Début purge version anterieure a Sketchup $version_sketchup ---"
+    find /home -maxdepth 7 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/SketchUp/SketchUp.*" | grep -v "$version_sketchup" > /tmp/dossiers_sketchup.tmp
+
+    #On lit le fichier contenant les dossiers à supprimer ligne par ligne
+    while read ligne
+    do
+	  #On supprime le dossier indiqué par la ligne actuelle
+    rm -rf "$ligne"
+	  #On affiche dans le log le dossier supprimé
+	  echo "$ligne"
+    done < /tmp/dossiers_sketchup.tmp
+    echo -e "--- Fin purge version anterieure a Sketchup $version_sketchup ---\n"
+
+    #On supprime le fichier temporaire
+    rm -f /tmp/dossiers_sketchup.tmp
+  fi
+#On supprime le fichier temporaire
+
+fi
+####################
+
 
 }
 

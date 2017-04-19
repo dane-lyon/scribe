@@ -1,7 +1,7 @@
 #!/bin/bash
 # Ce script purge certains fichiers dans les repertoires personnels
 # DSI - DANE de l'académie de Lyon
-# Version 6.1 - Avril 2017
+# 6.1 - Avril 2017
 
 if [ ! -d /var/log/purge ] ; then
 mkdir /var/log/purge
@@ -108,11 +108,11 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_
 if [ -e "/home/wpkg/packages/mBLock.xml" ] 
 then
 #On extrait la version de mBlock depuis le package
-version=$(grep \"version\" /home/wpkg/packages/mBLock.xml | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
+version_mblock=$(grep \"version\" /home/wpkg/packages/mBLock.xml | awk -F"value=\"" '{ print $2 }' | awk -F\" '{print $1}')
 #On indique la version actuelle de mBlock
-echo "Version actuelle de mBlock : $version"
+echo "Version actuelle de mBlock : $version_mblock"
 #On stocke dans un fichier temporaire l'emplacement des dossiers à supprimer
-find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/\(com.makeblock\|cc.mblock\).*" | grep -v "$version" > /tmp/dossiers_mblock.tmp
+find /home -maxdepth 6 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/\(com.makeblock\|cc.mblock\).*" | grep -v "$version_mblock" > /tmp/dossiers_mblock.tmp
 
 #On lit le fichier contenant les dossiers à supprimer ligne par ligne
 while read ligne

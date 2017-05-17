@@ -1,4 +1,5 @@
 #!/bin/bash
+#v1.2
 
 #création du lien symbolique pour wpkg
 #et téléchargement de wpkg-manage + clients 32 et 7 - 64 bits
@@ -26,15 +27,18 @@ if [ $? -eq 0 ] ; then
                 mv /tmp/WPKG\ Client\ 1.3.14-x32.msi /home/wpkg/WPKG_Client32.msi
             else echo "le client wpkg 32bits est déjà présent"
             fi
-
+               
+            # les 2 liens Google ci-dessous ne fonctionnent plus, ils ont été remplacé temporairement pour que ça fonctionne
             if [ ! -f /home/wpkg/Wpkg-GP_x86.exe  ] ; then
-                wget http://wpkg-gp.googlecode.com/files/Wpkg-GP-0.15_x86.exe
+                #wget http://wpkg-gp.googlecode.com/files/Wpkg-GP-0.15_x86.exe #lien HS
+                wget http://rezotice.ac-lyon.fr/portail/partage/wpkg/Wpkg-GP-0.15_x86.exe
                 mv /tmp/Wpkg-GP-0.15_x86.exe /home/wpkg/Wpkg-GP_x86.exe
             else echo "le client wpkg 7 32bits est déjà présent"
             fi
 
             if [ ! -f /home/wpkg/Wpkg-GP_x64.exe  ] ; then
-                wget http://wpkg-gp.googlecode.com/files/Wpkg-GP-0.15_x64.exe
+                #wget http://wpkg-gp.googlecode.com/files/Wpkg-GP-0.15_x64.exe  #lien HS
+                wget http://rezotice.ac-lyon.fr/portail/partage/wpkg/Wpkg-GP-0.15_x64.exe
                 mv /tmp/Wpkg-GP-0.15_x64.exe /home/wpkg/Wpkg-GP_x64.exe
             else echo "le client wpkg 7 64bits est déjà présent"
             fi

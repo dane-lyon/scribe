@@ -1,8 +1,8 @@
 ﻿#!/bin/bash
 #instinfosquota
-#
+
+#1.0.2
 # Script d'installation d'infosquota pour Scribe 2.3 ou Scribe 2.2
-#
 #
 #
 
@@ -168,6 +168,7 @@ if [ $? -ne 0 ] ; then
 else
 	echo -e "["'\E[32m'"OK"'\E[0m'"] - mise en place des droits sur /var/www/html/outils/"
 fi
+mkdir /var/www/html/outils/quotas/log
 chmod -R 2750 /var/www/html/outils/quotas/log
 if [ $? -ne 0 ] ; then
 	EchoRouge "Problème lors de l'application des droits sur /var/www/html/outils/quotas/log"

@@ -4,7 +4,6 @@
 # Script d'installation d'infosquota pour Scribe 2.3 ou Scribe 2.2
 #
 #
-#Version 2.03
 #
 
 . /usr/share/eole/FonctionsEoleNg
@@ -20,7 +19,7 @@ elif [ "$activer_proxy_client" == "oui" ] ; then
 fi
 
 #variable pour le nom du fichier Ã  changer en cas de changement de nom
-file="infosquota2.02.tar.gz"
+file="infosquota.tar.gz"
 numfile="570"
 ######
 
@@ -65,7 +64,7 @@ tar zxf $file &>/dev/null
 if [ $? -eq 0 ] ; then
 	echo -e "["'\E[32m'"OK"'\E[0m'"] - Décompression réussie"
 else
-	EchoRouge "Problème : le fichier infosquota2.01.tar.gz n'a pas pu être décompressé !"
+	EchoRouge "Problème : le fichier infosquota.tar.gz n'a pas pu être décompressé !"
 	EchoRouge "Abandon de l'installation"
  	exit 1
 fi
@@ -77,7 +76,7 @@ echo
 echo "----"
 EchoGras "Installation de infosquota2"
 #cron
-cp -f /tmp/infosquota2/tache_cron.d/infosquota /etc/cron.d/
+cp -f /tmp/infosquota/tache_cron.d/infosquota /etc/cron.d/
 if [ $? -ne 0 ] ; then
 	EchoRouge "Problème de copie du cron !"
 	EchoRouge "Abandon de l'installation"
@@ -86,7 +85,7 @@ else
 	echo -e "["'\E[32m'"OK"'\E[0m'"] - Copie du cron"
 fi
 
-cp -f /tmp/infosquota2/tache_cron.weekly/findfic /etc/cron.weekly/
+cp -f /tmp/infosquota/tache_cron.weekly/findfic /etc/cron.weekly/
 if [ $? -ne 0 ] ; then
 	EchoRouge "Problème de copie du findfic !"
 	EchoRouge "Abandon de l'installation"
@@ -110,7 +109,7 @@ else
 fi
 
 #outils
-cp -Rf /tmp/infosquota2/infosquota/* /home/netlogon/infosquota/
+cp -Rf /tmp/infosquota/infosquota/* /home/netlogon/infosquota/
 if [ $? -ne 0 ] ; then
 	EchoRouge "Problème de copie de l'application !"
 	EchoRouge "Abandon de l'installation"
@@ -132,7 +131,7 @@ else
 	fi
 fi
 
-cp -Rf /tmp/infosquota2/outils/* /var/www/html/outils/
+cp -Rf /tmp/infosquota/outils/* /var/www/html/outils/
 if [ $? -ne 0 ] ; then
 	EchoRouge "Problème de copie de l'application web !"
 	EchoRouge "Abandon de l'installation"
@@ -141,7 +140,7 @@ else
 	echo -e "["'\E[32m'"OK"'\E[0m'"] - Copie de l'application dans /var/www/html/outils/"
 fi
 
-cp -f /tmp/infosquota2/sites-enabled/* /etc/apache2/sites-enabled/
+cp -f /tmp/infosquota/sites-enabled/* /etc/apache2/sites-enabled/
 if [ $? -ne 0 ] ; then
 	EchoRouge "Problème de copie de la config d'outils !\n"
 	EchoRouge "Abandon de l'installation"
@@ -212,7 +211,7 @@ fi
 echo
 echo "----"
 EchoGras "Suppression du répertoire temporaire"
-rm -rf /tmp/infosquota2
+rm -rf /tmp/infosquota
 if [ $? -ne 0 ] ; then
 	EchoRouge "Problème lors de la suppression du répertoire temporaire"
 else

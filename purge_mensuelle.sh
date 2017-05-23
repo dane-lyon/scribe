@@ -9,7 +9,7 @@ fi
 
 log="/var/log/purge/purge_mensuelle.log"
 
-purge()
+purge_mensuelle()
 {
     ####################
     ## Suppression des dossiers com.makeblock.Scratch.old_version
@@ -85,6 +85,13 @@ purge()
       fi
     fi
 
+    ####################
+    ## Suppression du dossier Scratch
+    echo + Nettoyage Scratch
+    find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/edu\.media\.mit\.Scratch2Editor' -exec rm -rf {} \; -print
+    ####################print
+
+
 }
 
 
@@ -98,6 +105,6 @@ if [ $(date +%d) -le 7 ]
 
 	#copie du log dans le répertoire de l'admin
 	echo "+ Copie du log dans le répertoire de l'admin"
-	mkdir /home/a/admin/perso/purge-log &>/dev/null
-	cp $log /home/a/admin/perso/purge-log &>/dev/null
+	mkdir /home/a/admin/perso/purge_mensuelle-log &>/dev/null
+	cp $log /home/a/admin/perso/purge_mensuelle-log &>/dev/null
 fi

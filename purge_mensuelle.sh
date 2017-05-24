@@ -89,7 +89,7 @@ purge_mensuelle()
     ## Suppression du dossier Scratch
     echo + Nettoyage Scratch
     find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/edu\.media\.mit\.Scratch2Editor' -exec rm -rf {} \; -print
-    ####################print
+    ####################
 
 
 }
@@ -99,7 +99,7 @@ if [ $(date +%d) -le 7 ]
   then
 	echo "">>  $log
 	echo "******************************************************************">>  $log
-	echo "Purge mensuelle des /home/<user>/.Config/Application Data du $(date)">>  $log
+	echo "Purge mensuelle des /home/<user>/config_eole/Application Data du $(date)">>  $log
 	purge_mensuelle 1>>  $log 2>&1
 	echo "Purge mensuelle terminee a $(date)">>  $log
 

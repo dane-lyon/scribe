@@ -1,7 +1,7 @@
 #!/bin/bash
 # Ce script purge certains fichiers dans les repertoires personnels
 # DSI - DANE de l'académie de Lyon
-# 6.1 - Avril 2017
+# 7.1 - Juin 2017
 
 if [ ! -d /var/log/purge ] ; then
 mkdir /var/log/purge

@@ -99,7 +99,7 @@ if [ $(date +%d) -le 7 ]
   then
 	echo "">>  $log
 	echo "******************************************************************">>  $log
-	echo "Purge mensuelle des /home/<user>/config_eole/Application Data du $(date)">>  $log
+	echo "Purge mensuelle des /home/<user>/.Config/Application Data du $(date)">>  $log
 	purge_mensuelle 1>>  $log 2>&1
 	echo "Purge mensuelle terminee a $(date)">>  $log
 

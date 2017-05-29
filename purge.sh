@@ -39,7 +39,19 @@ if [ -f /root/drt/purge.conf ] ; then
 else
 	find /home -maxdepth 10 -type f -size +11M -iregex '^.*places\.sqlite$' -exec rm {} \; -print
 fi
+
 ####################
+
+####################
+## Suppression de fichiers dll video dans Profile Firefox
+echo + Nettoyage dll video Firefox
+
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Mozilla/Firefox/Profiles/Defaut/gmp' -exec rm -rf {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Mozilla/Firefox/Profiles/Defaut/gmp-widevinecdm' -exec rm -rf {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Mozilla/Firefox/Profiles/Defaut/gmp-gmpopenh264' -exec rm -rf {} \; -print
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Mozilla/Firefox/Profiles/Defaut/gmp-eme-adobe' -exec rm -rf {} \; -print
+####################
+
 
 ####################
 ## Open Office

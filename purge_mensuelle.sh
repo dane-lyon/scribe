@@ -11,6 +11,16 @@ log="/var/log/purge/purge_mensuelle.log"
 
 purge_mensuelle()
 {
+
+####################
+## Open Office
+  echo + Nettoyage Open Office
+# Purge du cache d'OpenOffice
+find /home -maxdepth 12 -type f -iregex '^.*OpenOffice\.org.*cache.*\.dat$' -exec rm {} \; -print
+# Suppression des anciens dossier OpenOffice.org2
+find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/OpenOffice\.org2' -exec rm -r {} \; -print
+####################
+
     ####################
     ## Suppression des dossiers com.makeblock.Scratch.old_version
     echo + Nettoyage MBlock

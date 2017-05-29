@@ -96,6 +96,64 @@ Et y copier le contenu suivant:
 ```
 Grace à ce fichier il y aura une **rotation mensuelle, 4 rotations dans la période** : donc ici 4 par mois = 1 log par semaine et **compressera les log au format “nom+date.gz”**
 
+## purge_mensuelle.sh
+
+Scripts de purge des répertoires personnels sur un serveur Eole-Scribe à executer mensuellement.
+
+Ce script supprime des dossiers laissés par une ancienne version d´un logiciel, il n´est pas utile de le lancer tous les jours.
+
+### Installation
+
+Pour commencer, nous allons créer un fichier nommé purge_mensuelle.sh
+```Shell
+mkdir /root/drt
+cd /root/drt
+nano purge_mensuelle.sh
+```
+Puis nous insérons le script présent sur le GitHub, et nous le rendons exécutable
+```Shell
+cd /root/drt
+chmod +x purge_mensuelle.sh
+```
+On teste que le script fonctionne correctement
+```Shell
+cd /root/drt
+./purge_mensuelle.sh
+```
+Le script va créer un fichier purge_mensuelle.log dans /var/log/purge/ dans lequel on pourra retrouver la liste des fichiers supprimés ainsi que les éventuels messages d'erreur liés à la purge. Ce fichier log sera automatiquement copié dans un dossier purge_mensuelle-log contenu dans U:\ de l'admin.
+
+### Exécution périodique
+
+Il nous faut maintenant créer dans le répertoire /etc/cron.d/ un fichier avec un nom parlant, par exemple “purge_mensuelle”
+```Shell
+nano /etc/cron.d/purge_mensuelle
+```
+ Et y ajouter les lignes suivantes:
+```Shell
+# purge des /home/<user>/.Config/Application Data tous les mercredis du mois à 6h00
+0 6 * * 3 root [ -x /root/drt/purge_mensuelle.sh ] && sh /root/drt/purge_mensuelle.sh
+```
+Une condition dans le script fera en sorte que le script ne se lance que le premier mercredi du mois.
+
+### Rotation du log
+
+Etant donné que le purge_mensuelle.log va se remplir avec la liste des fichiers supprimés, il serait intéressant de mettre en place sa rotation. Pour cela, créer un fichier “purgemensuellelog” dans le répertoire /etc/logrotate.d
+```Shell
+cd /etc/logrotate.d
+nano purgemensuellelog
+```
+Et y copier le contenu suivant :
+```Shell
+/var/log/purge/purge_mensuelle.log {
+  monthly
+  rotate 1
+  missingok
+  compress
+  dateext
+}
+```
+Grace à ce fichier il y aura une rotation mensuelle, une rotation dans la période : donc ici 1 par mois = 1 log par mois et compressera les log au format “nom+date.gz”.
+
 ## purgesimple.sh
 
 Nous avons mis en place également un script plus simple qui permet de purger les profils avant une migration vers Scribe 2.3. Cela permet de gagner du temps pour le transfert des données en supprimant plein de petits fichiers.

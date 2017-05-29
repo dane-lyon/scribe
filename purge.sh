@@ -52,16 +52,6 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Applic
 find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Mozilla/Firefox/Profiles/Defaut/gmp-eme-adobe' -exec rm -rf {} \; -print
 ####################
 
-
-####################
-## Open Office
-  echo + Nettoyage Open Office
-# Purge du cache d'OpenOffice
-find /home -maxdepth 12 -type f -iregex '^.*OpenOffice\.org.*cache.*\.dat$' -exec rm {} \; -print
-# Suppression des anciens dossier OpenOffice.org2
-find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/OpenOffice\.org2' -exec rm -r {} \; -print
-####################
-
 ####################
 ## LibreOffice
  echo + Nettoyage Libre Office

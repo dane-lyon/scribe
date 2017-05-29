@@ -54,7 +54,7 @@ mkdir /root/drt
 cd /root/drt
 nano purge.sh
 ```    
-et y copier le script qui est à présent sur le Github.
+et y copier le script [purge.sh](https://github.com/dane-lyon/scribe/blob/master/purge.sh).
 Il ne faut pas oublier de rendre le fichier exécutable :
 ```Shell
 chmod +x purge.sh
@@ -98,7 +98,7 @@ Grace à ce fichier il y aura une **rotation mensuelle, 4 rotations dans la pér
 
 ## purge_mensuelle.sh
 
-Scripts de purge des répertoires personnels sur un serveur Eole-Scribe à executer mensuellement.
+Scripts de purge des répertoires personnels sur un serveur Eole-Scribe à exécuter mensuellement.
 
 Ce script supprime des dossiers laissés par une ancienne version d´un logiciel, il n´est pas utile de le lancer tous les jours.
 
@@ -110,7 +110,7 @@ mkdir /root/drt
 cd /root/drt
 nano purge_mensuelle.sh
 ```
-Puis nous insérons le script présent sur le GitHub, et nous le rendons exécutable
+Puis nous insérons le script [purge_mensuelle.sh](https://github.com/dane-lyon/scribe/blob/master/purge_mensuelle.sh), et nous le rendons exécutable
 ```Shell
 cd /root/drt
 chmod +x purge_mensuelle.sh

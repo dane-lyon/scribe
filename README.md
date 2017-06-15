@@ -130,7 +130,7 @@ nano /etc/cron.d/purge_mensuelle
 ```
  Et y ajouter les lignes suivantes:
 ```Shell
-# purge des /home/<user>/.Config/Application Data tous les mercredis du mois à 6h00
+# purge des /home/<user>/.Config/Application Data le 1er mercredi du mois à 6h00
 0 6 * * 3 root [ -x /root/drt/purge_mensuelle.sh ] && sh /root/drt/purge_mensuelle.sh
 ```
 Une condition dans le script fera en sorte que le script ne se lance que le premier mercredi du mois.

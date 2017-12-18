@@ -115,7 +115,8 @@ Puis nous insérons le script [purge_mensuelle.sh](https://github.com/dane-lyon/
 cd /root/drt
 chmod +x purge_mensuelle.sh
 ```
-On teste que le script fonctionne correctement
+On teste que le script fonctionne correctement.
+Si la date du jour est supérieur au 7, modifier le temps du temps la ligne 108 en mettant une valeur supérieure à la date du jour (ne pas oublier de remettre la valeur 7 à la fin du test).
 ```Shell
 cd /root/drt
 ./purge_mensuelle.sh

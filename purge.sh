@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ce script purge certains fichiers dans les repertoires personnels
+# Ce script purge certains fichiers dans les répertoires personnels
 # DSI - DANE de l'académie de Lyon
 # 7.1 - Juin 2017
 
@@ -20,8 +20,8 @@ fi
 
 ####################
 ## FIREFOX
-# On n'utilise pas de chemin plus precis pour prendre aussi en compte les fichiers d'Eclair
-# qui ne sont pas au meme endroit
+# On n'utilise pas de chemin plus précis pour prendre aussi en compte les fichiers d'Eclair
+# qui ne sont pas au même endroit
   echo + Nettoyage Firefox
 # Purge des fichiers .sqlite de Firefox
 find /home -maxdepth 10 -type f -iregex '^.*Firefox.*urlclassifier.\.sqlite$' -exec rm {} \; -print
@@ -43,7 +43,7 @@ fi
 ####################
 
 ####################
-## Suppression de fichiers dll video dans Profile Firefox
+## Suppression de fichiers dll vidéo dans Profile Firefox
 echo + Nettoyage dll video Firefox
 
 find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Application\ Data/Mozilla/Firefox/Profiles/Defaut/gmp' -exec rm -rf {} \; -print
@@ -80,7 +80,7 @@ find /home -maxdepth 14 -type f -iregex '^.*Sun.*cache.*$' -exec rm {} \; -print
 ####################
 
 ####################
-## Suppression des dossiers de cle USB U3
+## Suppression des dossiers de clé USB U3
   echo + Nettoyage Cle USB U3
 find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data.U3' -exec rm -r {} \; -print
 ####################

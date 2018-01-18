@@ -11,7 +11,7 @@ objectif :
 								<ValueOn>false</ValueOn>
 								<ValueOff>true</ValueOff>
 							</Variable>
-							<Commentaire>Mettre sur false pour autoriser la lecteure flash depuis partage réseau</Commentaire>
+							<Commentaire>Mettre sur false pour autoriser la lecture flash depuis partage réseau</Commentaire>
 						</Regle>
 
 - Juste après les lignes :
@@ -49,7 +49,7 @@ sed -n '/<Variable nom="browser.shell.checkDefaultBrowser" type="BOOLEAN">
 								<ValueOn>false</ValueOn>
 								<ValueOff>true</ValueOff>
 							</Variable>
-							<Commentaire>Mettre sur false pour autoriser la lecteure flash depuis partage réseau</Commentaire>
+							<Commentaire>Mettre sur false pour autoriser la lecture flash depuis partage réseau</Commentaire>
 						</Regle>'
 
 /home/esu/Console/ListeRegles.xml

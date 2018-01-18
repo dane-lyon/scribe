@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ce script purge certains fichiers dans les repertoires personnels une fois par mois
+# Ce script purge certains fichiers dans les répertoires personnels une fois par mois
 # DSI - DANE de l'académie de Lyon
 # 1.1 - Mai 2017
 
@@ -77,7 +77,7 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_
         echo -e "--- Fin purge du Webcache ---\n"
 
         #On stocke dans un fichier temporaire l'emplacement des dossiers à supprimer
-        echo "--- Début purge version anterieure a Sketchup $version_sketchup ---"
+        echo "--- Début purge version antérieure à Sketchup $version_sketchup ---"
         find /home -maxdepth 7 -type d -iregex "/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/SketchUp/SketchUp.*" | grep -v "$version_sketchup" > /tmp/dossiers_sketchup.tmp
 
         #On lit le fichier contenant les dossiers à supprimer ligne par ligne
@@ -88,7 +88,7 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_
     	  #On affiche dans le log le dossier supprimé
     	  echo "$ligne"
         done < /tmp/dossiers_sketchup.tmp
-        echo -e "--- Fin purge version anterieure a Sketchup $version_sketchup ---\n"
+        echo -e "--- Fin purge version antérieure à Sketchup $version_sketchup ---\n"
 
         #On supprime le fichier temporaire
         rm -f /tmp/dossiers_sketchup.tmp
@@ -111,7 +111,7 @@ if [ $(date +%d) -le 7 ]
 	echo "******************************************************************">>  $log
 	echo "Purge mensuelle des /home/<user>/.Config/Application Data du $(date)">>  $log
 	purge_mensuelle 1>>  $log 2>&1
-	echo "Purge mensuelle terminee a $(date)">>  $log
+	echo "Purge mensuelle terminée à $(date)">>  $log
 
 	#copie du log dans le répertoire de l'admin
 	echo "+ Copie du log dans le répertoire de l'admin"

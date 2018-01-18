@@ -1,5 +1,5 @@
 #!/bin/bash
-# Ce script purge certains dossiers APPDATA dans les repertoires personnels des utilisateurs
+# Ce script purge certains dossiers APPDATA dans les répertoires personnels des utilisateurs
 # DANE de l'académie de Lyon
 # Version 1 - Décembre 2013
 # Version modifiée pour une migration vers 2.3 : suppression des dossiers libreoffice, openoffice, sun et microsoft contenus dans Application Data
@@ -46,7 +46,7 @@ echo "">> $log
 echo "******************************************************************">> $log
 echo "Purge des /home/<user>/.Config/Application Data du $(date)">> $log
 purge 1>> $log 2>&1
-echo "Purge terminee a $(date)">> $log
+echo "Purge terminée à $(date)">> $log
 
 #copie du log dans le répertoire de l'admin
 echo "+ Copie du log dans le répertoire de l'admin"

@@ -11,10 +11,10 @@
 # remplacement de "\.config" par "\.config_eole dans la configuration ESU existante
 /bin/sed -i  's/\\.[Cc]onfig/\\config_eole/g' /home/esu/Base/*/*xml
 
-# deplacement du profil obligatoire XP retouche
+# déplacement du profil obligatoire XP retouché
 # il faut au préalable avoir modifié le profil obligatoire en suivant la documentation
 /bin/mv /home/a/admin/perso/ntuserXP.man /home/netlogon/profil/ntuser.man
-# deplacement du profil obligatoire 7 retouche
+# déplacement du profil obligatoire 7 retouché
 /bin/mv /home/a/admin/perso/ntuser7.man /home/netlogon/profil.V2/ntuser.man
 
  #mettre le droit de lecture aux profils obligatoires
@@ -22,7 +22,7 @@
  chmod 0644 /home/netlogon/profil/ntuser.man
  chmod 0644 /home/netlogon/profil.V2/ntuser.man 
 
-# renomme les dossier .cCfonfig en config_eole
+# renomme les dossier .cConfig en config_eole
 ldapsearch -x cn=DomainUsers | grep -i memberuid | awk '{print $2}'| sort -u | while read i
 do
     # suppression du dossier qui ne devrait pas exister

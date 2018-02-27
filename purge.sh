@@ -58,7 +58,7 @@ find /home -maxdepth 10 -type d -iregex '/home/.?/[^/]*/perso/config_eole/Applic
 # Purge du cache de LibreOffice
 find /home -maxdepth 12 -type f -iregex '^.*LibreOffice.*cache.*\.dat$' -exec rm {} \; -print
 find /home -maxdepth 12 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/LibreOffice/3/user/uno\_packages/cache' -exec rm -rf {} \; -print
-find /home -maxdepth 12 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/LibreOffice/4/user/uno\_packages/cache' -exec rm -rf {} \; -print
+# find /home -maxdepth 12 -type d -iregex '/home/.?/[^/]*/perso/\(.Config\|config_eole\)/Application\ Data/LibreOffice/4/user/uno\_packages/cache' -exec rm -rf {} \; -print
 ####################
 
 ####################

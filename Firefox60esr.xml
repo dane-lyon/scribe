@@ -2,7 +2,7 @@
 <package 
   id="FirefoxESR"
   name="Mozilla Firefox ESR : LE navigateur libre du web"
-  revision="%version%.3"
+  revision="%version%.1"
   reboot="false"
   priority="200">
 

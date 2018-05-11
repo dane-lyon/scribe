@@ -1,0 +1,51 @@
+<package 
+  <!-- Attention : incompatible avec XP ! -->
+  
+  id="FirefoxESR"
+  name="Mozilla Firefox ESR : LE navigateur libre du web"
+  revision="%version%.3"
+  reboot="false"
+  priority="200">
+
+  <variable name="version_dl" value="60.0esr" />
+  <variable name="version" value="60.0"
+ />
+
+<eoledl dl="http://download.mozilla.org/?product=Firefox-%version_dl%&amp;os=win&amp;lang=fr" destname="firefox/Firefox Setup %version_dl%.exe" />
+
+    <variable name="PROGRAMFILES" value="%PROGRAMFILES%" architecture="x86"/>
+    <variable name="PROGRAMFILES" value="%PROGRAMFILES(X86)%" architecture="x64"/>
+    <variable name="ComSpec" value="%SystemRoot%\System32\cmd.exe" architecture="x86"/>
+    <variable name="ComSpec" value="%SystemRoot%\SysWOW64\cmd.exe" architecture="x64"/>
+
+    <check
+    type="uninstall"
+    condition="exists"
+    path="Mozilla Firefox %version% ESR (x86 fr)" />
+
+  <install cmd="taskkill /F /IM Firefox.exe">
+    <exit code="0" />
+    <exit code="128" />
+    <exit code="-1073741515" />
+  </install>
+
+  <install cmd='"%SOFTWARE%\firefox\Firefox Setup %version_dl%.exe" -ms' />
+
+  <!-- les trois lignes suivantes font de Firefox votre navigateur par défaut. Si vous ne le souhaitez pas, mettre les 3 lignes en commentaires --> 
+  <install cmd='%COMSPEC% /C IF EXIST "%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" "%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" /SetAsDefaultAppGlobal' >
+        <exit code="any" />
+  </install>
+
+
+  <upgrade include='install' />
+
+  <downgrade include='install' />
+
+  <remove cmd="taskkill /F /IM Firefox.exe">
+    <exit code="0" />
+    <exit code="128" />
+    <exit code="-1073741515" />
+  </remove>
+  <remove cmd='"%PROGRAMFILES%\Mozilla Firefox\uninstall\helper.exe" /S' />
+
+</package>
